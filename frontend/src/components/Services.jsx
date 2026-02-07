@@ -72,12 +72,12 @@ const Services = () => {
                 </p>
 
                 {/* Link */}
-                <a
+                {/* <a
                   href="/services"
                   className="inline-block font-semibold text-[#1E3A8A] hover:text-[#C62828] transition"
                 >
                   Learn More →
-                </a>
+                </a> */}
               </div>
             );
           })}
