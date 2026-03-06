@@ -1,25 +1,25 @@
 import React from "react";
-import { Briefcase, Home, Users } from "lucide-react";
+import { Briefcase, Home, Users, ArrowRight } from "lucide-react";
 
 const services = [
   {
     title: "Commercial AV Solutions",
     description:
-      "Custom AV setups for office spaces, conference rooms, digital signage, and more. Professional and scalable solutions for any commercial setting.",
+      "Custom AV setups for office spaces, conference rooms, digital signage, and scalable solutions for modern workplaces.",
     icon: Briefcase,
     delay: 100,
   },
   {
     title: "Residential AV Solutions",
     description:
-      "Transform your home with smart AV systems, home theaters, security solutions, and integrated smart living experiences.",
+      "Transform your home with smart AV systems, home theaters, security solutions, and fully integrated smart living.",
     icon: Home,
     delay: 200,
   },
   {
     title: "Event AV Solutions",
     description:
-      "From conferences to exhibitions, we provide premium AV setups including sound systems, video walls, projectors, and live streaming solutions.",
+      "Professional AV setups for conferences, exhibitions, live events, including sound systems, video walls, and live streaming.",
     icon: Users,
     delay: 300,
   },
@@ -27,57 +27,71 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="solutions" className="bg-white py-20">
-      <div className="container mx-auto px-6 md:px-12">
+    <section
+      id="solutions"
+      className="relative bg-gradient-to-b from-white to-gray-50 py-24 overflow-hidden"
+    >
+      {/* Background Blurs */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-40"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+
         {/* Section Header */}
-        <div className="text-center mb-12" data-aos="fade-up">
-          <h2 className="text-4xl font-bold text-[#C62828] mb-3">
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent mb-4">
             Our Services
           </h2>
-          <p className="text-[#0F172A] max-w-2xl mx-auto">
-            We offer customized AV solutions for a variety of industries. Explore
-            our services below.
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We deliver innovative AV and IT solutions tailored for businesses,
+            homes, and large-scale events.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => {
             const Icon = service.icon;
+
             return (
               <div
                 key={index}
                 data-aos="fade-up"
                 data-aos-delay={service.delay}
-                className="group border rounded-xl p-8 text-center hover:shadow-lg transition bg-white"
+                className="group relative bg-white border rounded-2xl p-10 shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-2"
               >
                 {/* Icon */}
-                <div className="flex justify-center mb-5">
-                  <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[#1E3A8A]/10 group-hover:bg-[#C62828]/10 transition">
-                    <Icon
-                      size={32}
-                      className="text-[#1E3A8A] group-hover:text-[#C62828] transition"
-                    />
-                  </div>
+                <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-[#1E3A8A]/10 mb-6 group-hover:bg-[#C62828]/10 transition">
+                  <Icon
+                    size={32}
+                    className="text-[#1E3A8A] group-hover:text-[#C62828] transition"
+                  />
                 </div>
 
                 {/* Title */}
-                <h4 className="text-xl font-semibold text-[#0F172A] mb-3">
+                <h3 className="text-xl font-semibold text-[#0F172A] mb-3">
                   {service.title}
-                </h4>
+                </h3>
 
                 {/* Description */}
-                <p className="text-[#0F172A]/80 mb-4">
+                <p className="text-gray-600 mb-6">
                   {service.description}
                 </p>
 
-                {/* Link */}
-                {/* <a
+                {/* CTA */}
+                <a
                   href="/services"
-                  className="inline-block font-semibold text-[#1E3A8A] hover:text-[#C62828] transition"
+                  className="inline-flex items-center gap-2 text-[#1E3A8A] font-semibold group-hover:text-[#C62828] transition"
                 >
-                  Learn More →
-                </a> */}
+                  Learn More
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition"
+                  />
+                </a>
+
+                {/* Hover Border Effect */}
+                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#C62828]/30 transition pointer-events-none"></div>
               </div>
             );
           })}

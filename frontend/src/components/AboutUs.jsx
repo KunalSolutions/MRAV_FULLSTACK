@@ -3,56 +3,80 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 
 const AboutUs = () => {
   return (
-    <section id="about" className="bg-white py-20">
+    <section
+      id="about"
+      className="relative bg-gradient-to-b from-white to-gray-50 py-24 overflow-hidden"
+    >
+      {/* Background Blur Effect */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-40"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+
       {/* Section Title */}
-      <div className="container mx-auto text-center mb-12" data-aos="fade-up">
-        <h2 className="text-4xl font-bold text-[#C62828] mb-2">About</h2>
-        <p className="text-xl text-[#0F172A]">About Us</p>
+      <div className="max-w-7xl mx-auto text-center mb-16 px-6">
+        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent mb-3">
+          About Us
+        </h2>
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          Delivering world-class AV & IT solutions with innovation, expertise,
+          and decades of industry leadership.
+        </p>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left Content */}
-          <div className="lg:w-1/2" data-aos="fade-up" data-aos-delay="100">
-            <p className="text-[#0F172A] mb-6">
-              FIRST CLASS PROFESSIONAL AV / IT SOLUTIONS SINCE 1985. 
-              Since 1985, we’ve been transforming the digital world with our holistic AV/IT solutions. Founded by Mr. Mahesh Dagar in Mumbai, 
-              'M.R. ENTERPRISES' today has offices across India and a presence in 3 other countries. 
-              With a dedicated team of over 120 employees, we design, integrate, and incorporate the latest AV technology and communication systems 
-              into business facilities across the world.
-            </p>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+        
+        {/* Left Content */}
+        <div>
+          <p className="text-gray-700 leading-relaxed mb-8">
+            FIRST CLASS PROFESSIONAL AV / IT SOLUTIONS SINCE 1985. Since 1985,
+            we’ve been transforming the digital world with our holistic AV/IT
+            solutions. Founded by Mr. Mahesh Dagar in Mumbai, "M.R.
+            ENTERPRISES" today has offices across India and a presence in 3
+            other countries.
+          </p>
 
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-[#0F172A]">
-                <CheckCircle className="text-[#C62828] mt-1" size={20} />
-                <span>Providing cutting-edge AV/IT solutions for businesses worldwide.</span>
-              </li>
-              <li className="flex items-start gap-3 text-[#0F172A]">
-                <CheckCircle className="text-[#C62828] mt-1" size={20} />
-                <span>Experienced team with over 120 employees dedicated to excellence.</span>
-              </li>
-              <li className="flex items-start gap-3 text-[#0F172A]">
-                <CheckCircle className="text-[#C62828] mt-1" size={20} />
-                <span>Offices in India and presence in 3 other countries.</span>
-              </li>
-            </ul>
+          {/* Features */}
+          <div className="space-y-5">
+            {[
+              "Providing cutting-edge AV/IT solutions for businesses worldwide.",
+              "Experienced team with over 120 employees dedicated to excellence.",
+              "Offices in India and presence in 3 other countries.",
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-4 p-4 rounded-xl bg-white shadow-sm border hover:shadow-md transition"
+              >
+                <CheckCircle
+                  className="text-[#C62828] flex-shrink-0"
+                  size={22}
+                />
+                <p className="text-gray-700">{item}</p>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Right Content */}
-          <div className="lg:w-1/2 flex flex-col justify-center" data-aos="fade-up" data-aos-delay="200">
-            <p className="text-[#0F172A] mb-6">
-              Our mission is to provide innovative AV and IT solutions that enhance communication and drive business success. 
-              We specialize in the design and integration of audiovisual systems that improve efficiency and user experience.
-            </p>
+        {/* Right Content Card */}
+        <div className="bg-white rounded-2xl shadow-lg border p-10 relative">
+          <div className="absolute -top-6 -left-6 w-16 h-16 bg-[#C62828] rounded-xl opacity-20"></div>
 
-            <a
-              href="/about"
-              className="inline-flex items-center text-[#1E3A8A] font-semibold hover:text-[#C62828] transition"
-            >
-              <span>Read More</span>
-              <ArrowRight className="ml-2" size={20} />
-            </a>
-          </div>
+          <h3 className="text-2xl font-semibold text-[#0F172A] mb-4">
+            Our Mission
+          </h3>
+
+          <p className="text-gray-700 mb-8 leading-relaxed">
+            Our mission is to provide innovative AV and IT solutions that
+            enhance communication and drive business success. We specialize in
+            designing and integrating advanced audiovisual systems that improve
+            efficiency and user experience.
+          </p>
+
+          <a
+            href="/about"
+            className="inline-flex items-center gap-2 bg-[#C62828] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#A61B1B] transition shadow-md hover:shadow-lg"
+          >
+            Read More
+            <ArrowRight size={18} />
+          </a>
         </div>
       </div>
     </section>

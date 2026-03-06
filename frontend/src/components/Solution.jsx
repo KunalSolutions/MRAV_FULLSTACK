@@ -67,28 +67,39 @@ const Solution = () => {
   const filteredSolutions =
     activeCategory === "All"
       ? solutionsData
-      : solutionsData.filter(item => item.category === activeCategory);
+      : solutionsData.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="portfolio" className="bg-white py-20">
+    <section
+      id="portfolio"
+      className="relative bg-gradient-to-b from-white to-gray-50 py-24 overflow-hidden"
+    >
+      {/* Background Blur */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-40"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+
       {/* Section Title */}
-      <div className="text-center mb-10" data-aos="fade-up">
-        <h2 className="text-4xl font-bold text-[#C62828]">Solution</h2>
-        <p className="text-[#0F172A] text-lg">Our Solution</p>
+      <div className="text-center mb-14">
+        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent">
+          Our Solutions
+        </h2>
+        <p className="text-gray-600 mt-3">
+          Explore our innovative AV solutions designed for modern environments.
+        </p>
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-4 mb-12">
-        {categories.map(cat => (
+      <div className="flex flex-wrap justify-center gap-4 mb-14">
+        {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-5 py-2 rounded-full cursor-pointer border font-semibold transition
-              ${
-                activeCategory === cat
-                  ? "bg-[#C62828] text-white"
-                  : "border-[#C62828] text-[#C62828] hover:bg-[#C62828]/10"
-              }`}
+            className={`px-6 py-2 rounded-full font-medium border transition backdrop-blur-sm
+            ${
+              activeCategory === cat
+                ? "bg-[#C62828] text-white border-[#C62828]"
+                : "border-gray-300 text-gray-700 hover:bg-[#C62828]/10"
+            }`}
           >
             {cat}
           </button>
@@ -96,31 +107,28 @@ const Solution = () => {
       </div>
 
       {/* Grid */}
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredSolutions.map((item, index) => (
             <div
               key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
               onClick={() => setSelectedItem(item)}
-              className="group cursor-pointer relative overflow-hidden rounded-xl shadow-lg"
+              className="group cursor-pointer relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2"
             >
               {/* Image */}
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-[320px] object-cover group-hover:scale-110 transition duration-500"
               />
 
-              {/* Brand Overlay */}
-              <div className="absolute inset-0 bg-[#1E3A8A]/70 
-                              opacity-100 md:opacity-0 md:group-hover:opacity-100 
-                              transition flex flex-col justify-end p-6">
-                <h4 className="text-xl font-semibold text-white">
-                  {item.title}
-                </h4>
-                <p className="text-white/90 text-sm mt-1">
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90"></div>
+
+              {/* Text */}
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <h4 className="text-xl font-semibold">{item.title}</h4>
+                <p className="text-sm text-white/80 mt-1">
                   {item.description}
                 </p>
               </div>
@@ -132,27 +140,25 @@ const Solution = () => {
       {/* Modal */}
       {selectedItem && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-6">
-          <div className="bg-white rounded-xl max-w-3xl w-full overflow-hidden relative">
+          <div className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden relative shadow-2xl">
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 text-[#C62828]"
+              className="absolute top-4 right-4 bg-white rounded-full p-2 shadow"
             >
-              <X size={28} />
+              <X size={22} />
             </button>
 
             <img
               src={selectedItem.image}
               alt={selectedItem.title}
-              className="w-full h-[400px] object-cover"
+              className="w-full h-[420px] object-cover"
             />
 
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-[#0F172A] mb-2">
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#0F172A] mb-3">
                 {selectedItem.title}
               </h3>
-              <p className="text-[#0F172A]/80">
-                {selectedItem.description}
-              </p>
+              <p className="text-gray-600">{selectedItem.description}</p>
             </div>
           </div>
         </div>

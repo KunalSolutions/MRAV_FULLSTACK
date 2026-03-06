@@ -6,7 +6,7 @@ import {
   Video,
   RadioTower,
   X,
-  Download,
+  ArrowRight,
 } from "lucide-react";
 
 const services = [
@@ -36,58 +36,36 @@ const services = [
   },
 ];
 
-const pricing = [
-  {
-    tier: "Silver AMC",
-    price: "₹25,000 / year",
-    features: ["Quarterly Maintenance", "Remote Support", "Basic Reports"],
-  },
-  {
-    tier: "Gold AMC",
-    price: "₹45,000 / year",
-    features: [
-      "Bi-Monthly Maintenance",
-      "Priority Support",
-      "Performance Reports",
-    ],
-  },
-  {
-    tier: "Platinum AMC",
-    price: "₹75,000 / year",
-    features: [
-      "Monthly Maintenance",
-      "24/7 Support",
-      "Dedicated Engineer",
-      "Zero Downtime SLA",
-    ],
-  },
-];
-
 const AMC = () => {
   const [activeService, setActiveService] = useState(null);
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-[#0F172A]">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Title */}
+    <section className="py-24 bg-gray-50 dark:bg-[#0F172A]">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-[#C62828]">
-            Annual Maintenance Contract (AMC)
+          <h2 className="text-3xl font-bold text-[#C62828] mb-3">
+            Annual Maintenance Contract
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-3 max-w-2xl mx-auto">
-            Reliable maintenance solutions for AV, IT, and broadcast systems.
+
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Professional maintenance solutions for AV, broadcast, and
+            conferencing systems ensuring reliability and peak performance.
           </p>
         </motion.div>
 
-        {/* Services */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        {/* Services Grid */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
           {services.map((service, i) => {
             const Icon = service.icon;
+
             return (
               <motion.div
                 key={i}
@@ -96,18 +74,50 @@ const AMC = () => {
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
                 onClick={() => setActiveService(service)}
-                className="cursor-pointer bg-white dark:bg-slate-800 p-6 rounded-2xl shadow hover:shadow-xl transition"
+                className="
+                group cursor-pointer
+                bg-white dark:bg-slate-800
+                rounded-2xl p-8
+                shadow-md hover:shadow-2xl
+                transition duration-300
+                hover:-translate-y-2
+                text-center
+                "
               >
-                <Icon className="w-8 h-8 text-[#1E3A8A] mb-4" />
-                <h4 className="font-semibold text-lg dark:text-white">
+
+                {/* Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="
+                  w-14 h-14 flex items-center justify-center
+                  rounded-full
+                  bg-red-50 dark:bg-slate-700
+                  group-hover:bg-[#C62828]
+                  transition
+                  ">
+                    <Icon className="w-6 h-6 text-[#C62828] group-hover:text-white transition"/>
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h4 className="font-semibold text-lg dark:text-white mb-3">
                   {service.title}
                 </h4>
-                <p className="text-sm text-gray-500 mt-2">
-                  Click for details →
+
+                {/* Preview */}
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Maintenance, diagnostics & system optimization
                 </p>
+
+                {/* CTA */}
+                <div className="mt-4 flex justify-center text-[#C62828] text-sm font-medium">
+                  Learn More
+                  <ArrowRight size={16} className="ml-2"/>
+                </div>
+
               </motion.div>
             );
           })}
+
         </div>
       </div>
 
@@ -118,29 +128,55 @@ const AMC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+            onClick={() => setActiveService(null)}
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
           >
             <motion.div
-              initial={{ scale: 0.8 }}
+              initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              className="bg-white dark:bg-slate-900 p-8 rounded-2xl max-w-md relative"
+              exit={{ scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
+              className="
+              bg-white dark:bg-slate-900
+              p-8 rounded-2xl
+              max-w-lg w-full
+              relative
+              shadow-2xl
+              "
             >
               <button
                 onClick={() => setActiveService(null)}
-                className="absolute top-4 right-4"
+                className="absolute top-4 right-4 text-gray-500 hover:text-red-500"
               >
                 <X />
               </button>
-              <h3 className="text-xl font-bold mb-3 dark:text-white">
+
+              <h3 className="text-2xl font-bold text-[#C62828] mb-4">
                 {activeService.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {activeService.details}
               </p>
+
+              <button
+                onClick={() => setActiveService(null)}
+                className="
+                mt-6 px-6 py-2
+                bg-[#1E3A8A]
+                text-white
+                rounded-full
+                hover:opacity-90
+                "
+              >
+                Close
+              </button>
+
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </section>
   );
 };
