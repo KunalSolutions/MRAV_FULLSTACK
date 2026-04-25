@@ -13,31 +13,43 @@ const Header = () => {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header className="sticky top-0 z-50 bg-white shadow-md" role="banner">
+      
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
 
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        {/* Logo (SEO optimized) */}
+        <Link 
+          to="/" 
+          className="flex items-center gap-2"
+          aria-label="MR AV Solutions Home"
+        >
           <img
-            src="../MRAV.png"
-            alt="MR AV Solution"
-            className="h-20 w-auto"
+            src="/MRAV.png"
+            alt="MR AV Solutions - Audio Visual and IT Solutions Company"
+            className="h-16 w-auto"
+            loading="eager"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 text-sm">
+        <nav 
+          className="hidden md:flex items-center gap-8 text-sm"
+          aria-label="Main Navigation"
+        >
           <NavLink to="/" className={navLinkClass}>Home</NavLink>
-          <NavLink to="/about" className={navLinkClass}>About</NavLink>
+          <NavLink to="/about" className={navLinkClass}>About Us</NavLink>
           <NavLink to="/services" className={navLinkClass}>Services</NavLink>
-          <NavLink to="/solution" className={navLinkClass}>Solution</NavLink>
+          <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
           <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (accessible) */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-blue-900"
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -45,12 +57,15 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {open && (
-        <div className="md:hidden bg-white border-t">
-          <nav className="flex flex-col px-6 py-4 space-y-4 text-sm">
+        <div id="mobile-menu" className="md:hidden bg-white border-t">
+          <nav 
+            className="flex flex-col px-6 py-4 space-y-4 text-sm"
+            aria-label="Mobile Navigation"
+          >
             <NavLink to="/" onClick={() => setOpen(false)} className={navLinkClass}>Home</NavLink>
-            <NavLink to="/about" onClick={() => setOpen(false)} className={navLinkClass}>About</NavLink>
+            <NavLink to="/about" onClick={() => setOpen(false)} className={navLinkClass}>About Us</NavLink>
             <NavLink to="/services" onClick={() => setOpen(false)} className={navLinkClass}>Services</NavLink>
-            <NavLink to="/portfolio" onClick={() => setOpen(false)} className={navLinkClass}>Solution</NavLink>
+            <NavLink to="/solutions" onClick={() => setOpen(false)} className={navLinkClass}>Solutions</NavLink>
             <NavLink to="/contact" onClick={() => setOpen(false)} className={navLinkClass}>Contact</NavLink>
           </nav>
         </div>

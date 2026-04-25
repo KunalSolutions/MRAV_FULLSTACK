@@ -3,61 +3,64 @@ import { Briefcase, Home, Users, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    title: "Commercial AV Solutions",
+    title: "Commercial AV Solutions in Mumbai",
     description:
-      "Custom AV setups for office spaces, conference rooms, digital signage, and scalable solutions for modern workplaces.",
+      "Professional audio visual solutions for offices, conference rooms, digital signage, and enterprise environments.",
     icon: Briefcase,
-    delay: 100,
+    link: "#",
   },
   {
-    title: "Residential AV Solutions",
+    title: "Residential AV & Home Automation",
     description:
-      "Transform your home with smart AV systems, home theaters, security solutions, and fully integrated smart living.",
+      "Smart home solutions including home theaters, security systems, and fully integrated AV automation for modern living.",
     icon: Home,
-    delay: 200,
+    link: "#",
   },
   {
-    title: "Event AV Solutions",
+    title: "Event AV Solutions & Setup",
     description:
-      "Professional AV setups for conferences, exhibitions, live events, including sound systems, video walls, and live streaming.",
+      "Complete AV solutions for events, exhibitions, conferences, including sound systems, LED walls, and live streaming.",
     icon: Users,
-    delay: 300,
+    link: "#",
   },
 ];
 
 const Services = () => {
   return (
     <section
-      id="solutions"
+      id="services"
       className="relative bg-gradient-to-b from-white to-gray-50 py-24 overflow-hidden"
+      aria-labelledby="services-heading"
     >
-      {/* Background Blurs */}
+      {/* Background */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-40"></div>
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* Section Header */}
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent mb-4">
-            Our Services
+        {/* Header */}
+        <header className="text-center mb-16">
+          <h2
+            id="services-heading"
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent mb-4"
+          >
+            Audio Visual & IT Services in Mumbai, India
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We deliver innovative AV and IT solutions tailored for businesses,
-            homes, and large-scale events.
-          </p>
-        </div>
 
-        {/* Services Grid */}
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We provide end-to-end AV solutions including commercial setups,
+            residential automation, and event AV services across India.
+          </p>
+        </header>
+
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
-              <div
+              <article
                 key={index}
-                data-aos="fade-up"
-                data-aos-delay={service.delay}
                 className="group relative bg-white border rounded-2xl p-10 shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-2"
               >
                 {/* Icon */}
@@ -68,7 +71,7 @@ const Services = () => {
                   />
                 </div>
 
-                {/* Title */}
+                {/* Title (H3 for SEO hierarchy) */}
                 <h3 className="text-xl font-semibold text-[#0F172A] mb-3">
                   {service.title}
                 </h3>
@@ -78,21 +81,22 @@ const Services = () => {
                   {service.description}
                 </p>
 
-                {/* CTA */}
+                {/* CTA with keyword */}
                 <a
-                  href="/services"
+                  href={service.link}
                   className="inline-flex items-center gap-2 text-[#1E3A8A] font-semibold group-hover:text-[#C62828] transition"
+                  aria-label={`Learn more about ${service.title}`}
                 >
-                  Learn More
+                  Explore Service
                   <ArrowRight
                     size={18}
                     className="group-hover:translate-x-1 transition"
                   />
                 </a>
 
-                {/* Hover Border Effect */}
+                {/* Hover Border */}
                 <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#C62828]/30 transition pointer-events-none"></div>
-              </div>
+              </article>
             );
           })}
         </div>

@@ -1,10 +1,9 @@
-import React from "react";
 import {
-  MapPin,
-  Lightbulb,
   Award,
-  Users,
+  Lightbulb,
+  MapPin,
   ShieldCheck,
+  Users,
 } from "lucide-react";
 
 const values = [

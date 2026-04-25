@@ -4,52 +4,58 @@ import { Cpu, Volume2, Video, Lightbulb, Shield } from "lucide-react";
 
 const services = [
   {
-    title: "Automation",
+    title: "Automation Systems in Mumbai",
     category: "Automation",
     icon: Cpu,
     image: "/Services/1.jpg",
+    link: "#",
     description:
-      "Streamline your home or office with cutting-edge automation systems.",
+      "Smart automation solutions for homes and offices including lighting, control systems, and integrated AV.",
   },
   {
-    title: "Audio Systems",
+    title: "Professional Audio Systems",
     category: "Audio",
     icon: Volume2,
     image: "/Services/2.jpg",
+    link: "#",
     description:
-      "High-quality audio systems for home theaters and conference rooms.",
+      "High-quality audio solutions for conference rooms, auditoriums, and home theaters.",
   },
   {
-    title: "Lighting Solutions",
+    title: "Lighting Automation Solutions",
     category: "Automation",
     icon: Lightbulb,
     image: "/Services/3.jpg",
+    link: "#",
     description:
-      "Custom lighting systems for residential and commercial spaces.",
+      "Custom lighting automation systems for residential and commercial environments.",
   },
   {
-    title: "Video Systems",
+    title: "Video & Display Systems",
     category: "Video",
     icon: Video,
     image: "/Services/4.jpg",
+    link: "#",
     description:
-      "Advanced video systems including projectors and digital signage.",
+      "Advanced display solutions including LED walls, projectors, and digital signage.",
   },
   {
-    title: "Collaborative Systems",
+    title: "Video Conferencing Solutions",
     category: "Video",
     icon: Video,
     image: "/Services/5.jpg",
+    link: "#",
     description:
-      "Interactive AV solutions for collaboration and conferencing.",
+      "Collaborative AV solutions for seamless business communication and conferencing.",
   },
   {
-    title: "Surveillance & Security",
+    title: "Surveillance & Security Systems",
     category: "Automation",
     icon: Shield,
     image: "/Services/6.jpg",
+    link: "#",
     description:
-      "Advanced surveillance systems for safety and access control.",
+      "Advanced CCTV, access control, and security automation solutions.",
   },
 ];
 
@@ -57,7 +63,6 @@ const filters = ["All", "Automation", "Audio", "Video"];
 
 const ServicesSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [activeItem, setActiveItem] = useState(null);
 
   const filteredServices =
     activeFilter === "All"
@@ -65,19 +70,26 @@ const ServicesSection = () => {
       : services.filter((s) => s.category === activeFilter);
 
   return (
-    <section className="py-24 bg-gray-50 dark:bg-[#0F172A]">
+    <section
+      className="py-24 bg-gray-50 dark:bg-[#0F172A]"
+      aria-labelledby="services-heading"
+    >
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-bold text-[#C62828] mb-3">
-            Our Services
+        <header className="text-center mb-14">
+          <h2
+            id="services-heading"
+            className="text-3xl font-bold text-[#C62828] mb-3"
+          >
+            AV & Automation Services in Mumbai, India
           </h2>
+
           <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-            Customized AV & automation solutions designed for modern
-            businesses and smart spaces.
+            We provide professional audio visual systems, automation solutions,
+            and security systems for businesses, homes, and enterprises.
           </p>
-        </div>
+        </header>
 
         {/* Filters */}
         <div className="flex justify-center gap-4 mb-14 flex-wrap">
@@ -91,6 +103,7 @@ const ServicesSection = () => {
                     ? "bg-[#C62828] text-white shadow-md"
                     : "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-[#C62828] hover:text-white"
                 }`}
+              aria-label={`Filter ${filter} services`}
             >
               {filter}
             </button>
@@ -105,39 +118,32 @@ const ServicesSection = () => {
               const Icon = item.icon;
 
               return (
-                <motion.div
+                <article
                   key={item.title}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
                 >
 
-                  {/* Image */}
-                  <div
-                    onClick={() => setActiveItem(item)}
-                    className="relative overflow-hidden cursor-pointer"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-60 object-cover group-hover:scale-110 transition duration-500"
-                    />
+                  {/* Clickable Image (SEO important) */}
+                  <a href={item.link} aria-label={item.title}>
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={`${item.title} by MR AV Solutions in Mumbai`}
+                        loading="lazy"
+                        className="w-full h-60 object-cover group-hover:scale-110 transition duration-500"
+                      />
 
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
 
-                    {/* Icon */}
-                    <div className="absolute top-4 left-4 bg-white/90 p-2 rounded-full">
-                      <Icon size={18} className="text-[#C62828]" />
+                      <div className="absolute top-4 left-4 bg-white/90 p-2 rounded-full">
+                        <Icon size={18} className="text-[#C62828]" />
+                      </div>
+
+                      <h3 className="absolute bottom-4 left-4 text-white text-lg font-semibold">
+                        {item.title}
+                      </h3>
                     </div>
-
-                    {/* Title Overlay */}
-                    <h3 className="absolute bottom-4 left-4 text-white text-lg font-semibold">
-                      {item.title}
-                    </h3>
-                  </div>
+                  </a>
 
                   {/* Content */}
                   <div className="p-6 text-center">
@@ -145,14 +151,15 @@ const ServicesSection = () => {
                       {item.description}
                     </p>
 
-                    <button
-                      onClick={() => setActiveItem(item)}
-                      className="mt-5 text-sm font-medium text-[#C62828] hover:underline"
+                    <a
+                      href={item.link}
+                      className="mt-5 inline-block text-sm font-medium text-[#C62828] hover:underline"
                     >
-                      View Details →
-                    </button>
+                      Explore Service →
+                    </a>
                   </div>
-                </motion.div>
+
+                </article>
               );
             })}
           </AnimatePresence>
@@ -160,49 +167,12 @@ const ServicesSection = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      <AnimatePresence>
-        {activeItem && (
-          <motion.div
-            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveItem(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden max-w-xl w-full"
-            >
-              <img
-                src={activeItem.image}
-                alt={activeItem.title}
-                className="w-full h-64 object-cover"
-              />
-
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-[#C62828] mb-3">
-                  {activeItem.title}
-                </h3>
-
-                <p className="text-gray-700 dark:text-gray-300">
-                  {activeItem.description}
-                </p>
-
-                <button
-                  onClick={() => setActiveItem(null)}
-                  className="mt-6 px-6 py-2 bg-[#1E3A8A] text-white rounded-full hover:opacity-90"
-                >
-                  Close
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Hidden SEO Content */}
+      <p className="hidden">
+        MR AV Solutions provides professional AV services in Mumbai including
+        automation systems, video conferencing, audio systems, LED video walls,
+        and security solutions for commercial and residential projects across India.
+      </p>
     </section>
   );
 };

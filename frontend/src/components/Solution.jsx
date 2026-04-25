@@ -3,58 +3,67 @@ import { X } from "lucide-react";
 
 const solutionsData = [
   {
-    title: "Board Room",
-    description: "Premium space for strategic meetings",
-    image: "../1.jpg",
+    title: "Board Room AV Solutions",
+    description: "Advanced boardroom AV setup for strategic meetings and presentations.",
+    image: "/1.jpg",
     category: "Board",
+    link: "#",
   },
   {
-    title: "Conference Room",
-    description: "Ideal for corporate events and conferences",
-    image: "../2.jpg",
+    title: "Conference Room AV Solutions",
+    description: "Professional AV systems for conferences, meetings, and corporate collaboration.",
+    image: "/2.jpg",
     category: "Conference",
+    link: "#",
   },
   {
-    title: "Training Room",
-    description: "State-of-the-art setup for training programs",
-    image: "../4.jpg",
+    title: "Training Room AV Setup",
+    description: "Modern AV systems for training rooms, workshops, and educational environments.",
+    image: "/4.jpg",
     category: "Training",
+    link: "#",
   },
   {
-    title: "Meeting Room",
-    description: "Perfect for small group discussions",
-    image: "../3.jpg",
+    title: "Meeting Room AV Solutions",
+    description: "Compact and efficient AV solutions for small business meetings.",
+    image: "/3.jpg",
     category: "Board",
+    link: "#",
   },
   {
-    title: "Experience Center",
-    description: "Immersive experience for clients and partners",
-    image: "../5.jpg",
+    title: "Experience Center AV Design",
+    description: "Immersive AV experience centers for brands and customer engagement.",
+    image: "/5.jpg",
     category: "Event",
+    link: "#",
   },
   {
-    title: "Video Wall",
-    description: "High-definition video wall for stunning visuals",
-    image: "../6.jpg",
+    title: "Video Wall Solutions India",
+    description: "High-quality LED video wall solutions for corporate and commercial spaces.",
+    image: "/6.jpg",
     category: "Event",
+    link: "#",
   },
   {
-    title: "Auditorium",
-    description: "Spacious auditorium for events and presentations",
-    image: "../7.jpg",
+    title: "Auditorium AV Solutions",
+    description: "Complete AV setup for auditoriums, seminars, and large-scale events.",
+    image: "/7.jpg",
     category: "Event",
+    link: "#",
   },
   {
-    title: "Learning Center",
-    description: "Modern space designed for workshops and education",
-    image: "../8.jpg",
+    title: "Learning Center AV Systems",
+    description: "Interactive AV systems for education and training centers.",
+    image: "/8.jpg",
     category: "Training",
+    link: "#",
   },
   {
-    title: "Video Conference",
-    description: "Advanced facilities for hosting conferences",
-    image: "../9.png",
+    title: "Video Conferencing Solutions",
+    description: "Reliable video conferencing systems for seamless communication.",
+    image: "/9.png",
     category: "Conference",
+    link: "#",
   },
 ];
 
@@ -62,7 +71,6 @@ const categories = ["All", "Board", "Conference", "Training", "Event"];
 
 const Solution = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedItem, setSelectedItem] = useState(null);
 
   const filteredSolutions =
     activeCategory === "All"
@@ -71,22 +79,28 @@ const Solution = () => {
 
   return (
     <section
-      id="portfolio"
+      id="solutions"
       className="relative bg-gradient-to-b from-white to-gray-50 py-24 overflow-hidden"
+      aria-labelledby="solutions-heading"
     >
-      {/* Background Blur */}
+      {/* Background */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-40"></div>
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
 
-      {/* Section Title */}
-      <div className="text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent">
-          Our Solutions
+      {/* Heading */}
+      <header className="text-center mb-14">
+        <h2
+          id="solutions-heading"
+          className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#C62828] to-[#1E3A8A] bg-clip-text text-transparent"
+        >
+          AV Solutions for Businesses in Mumbai & India
         </h2>
-        <p className="text-gray-600 mt-3">
-          Explore our innovative AV solutions designed for modern environments.
+
+        <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+          Explore our audio visual solutions for boardrooms, conference rooms,
+          auditoriums, and enterprise environments across India.
         </p>
-      </div>
+      </header>
 
       {/* Filters */}
       <div className="flex flex-wrap justify-center gap-4 mb-14">
@@ -94,12 +108,13 @@ const Solution = () => {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-2 rounded-full font-medium border transition backdrop-blur-sm
+            className={`px-6 py-2 rounded-full font-medium border transition
             ${
               activeCategory === cat
                 ? "bg-[#C62828] text-white border-[#C62828]"
                 : "border-gray-300 text-gray-700 hover:bg-[#C62828]/10"
             }`}
+            aria-label={`Filter ${cat} solutions`}
           >
             {cat}
           </button>
@@ -110,59 +125,36 @@ const Solution = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredSolutions.map((item, index) => (
-            <div
+            <article
               key={index}
-              onClick={() => setSelectedItem(item)}
-              className="group cursor-pointer relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2"
+              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2"
             >
-              {/* Image */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-[320px] object-cover group-hover:scale-110 transition duration-500"
-              />
+              {/* Clickable Link (IMPORTANT for SEO) */}
+              <a href={item.link} aria-label={item.title}>
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90"></div>
+                <img
+                  src={item.image}
+                  alt={`${item.title} in Mumbai by MR AV Solutions`}
+                  loading="lazy"
+                  className="w-full h-[320px] object-cover group-hover:scale-110 transition duration-500"
+                />
 
-              {/* Text */}
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h4 className="text-xl font-semibold">{item.title}</h4>
-                <p className="text-sm text-white/80 mt-1">
-                  {item.description}
-                </p>
-              </div>
-            </div>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90"></div>
+
+                {/* Text */}
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="text-sm text-white/80 mt-1">
+                    {item.description}
+                  </p>
+                </div>
+
+              </a>
+            </article>
           ))}
         </div>
       </div>
-
-      {/* Modal */}
-      {selectedItem && (
-        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-6">
-          <div className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden relative shadow-2xl">
-            <button
-              onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 bg-white rounded-full p-2 shadow"
-            >
-              <X size={22} />
-            </button>
-
-            <img
-              src={selectedItem.image}
-              alt={selectedItem.title}
-              className="w-full h-[420px] object-cover"
-            />
-
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-[#0F172A] mb-3">
-                {selectedItem.title}
-              </h3>
-              <p className="text-gray-600">{selectedItem.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
