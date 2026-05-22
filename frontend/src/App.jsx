@@ -9,6 +9,8 @@ import About from "./pages/About";
 import ServicesPage from "./pages/Services";
 import SolutionPage from "./pages/Solution";
 import ContactPage from "./pages/Contact";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -23,7 +25,8 @@ const App = () => {
         <Route path="/contact" element={<ContactPage />} />
         
       </Routes>
-
+      <WhatsAppButton />
+      <ScrollToTop />
       <Footer />
     </Router>
   );
