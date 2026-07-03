@@ -1,29 +1,31 @@
 const App = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0B0B0B] px-8">
-      <div className="max-w-4xl">
-        <p className="mb-6 text-sm uppercase tracking-[0.4em] text-neutral-500">
-          Coming Soon
-        </p>
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-neutral-950 px-6">
+      {/* Background Glow */}
+      <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl" />
 
-        <h1 className="text-6xl font-light leading-tight text-white md:text-8xl">
-          Website 
+      <div className="relative max-w-3xl text-center">
+        <span className="inline-block rounded-full bg-white/5 px-4 py-2 text-sm tracking-wide text-neutral-400">
+          COMING SOON
+        </span>
+
+        <h1 className="mt-8 text-5xl font-semibold tracking-tight text-white md:text-7xl">
+          Website
           <br />
-          Under Construction.
+          Under Construction
         </h1>
 
-        <p className="mt-10 max-w-xl text-lg leading-8 text-neutral-400">
-          We're currently working on our new website to provide a better
-          experience for our visitors. Thank you for your patience while we
-          complete the final touches.
+        <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-neutral-400">
+          We're currently working on our new website to provide a better experience for our visitors. Thank you for your patience while we complete the final touches
         </p>
 
-        <div className="mt-16 flex items-center gap-4">
-          <div className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-          <span className="text-sm text-neutral-500">
-            We look forward to welcoming you soon.
-          </span>
+        <div className="mx-auto mt-14 h-[2px] w-48 overflow-hidden rounded-full bg-white/10">
+          <div className="h-full w-1/2 animate-pulse rounded-full bg-white" />
         </div>
+
+        <p className="mt-12 text-sm text-neutral-500">
+          We look forward to welcoming you soon
+        </p>
       </div>
     </div>
   );
