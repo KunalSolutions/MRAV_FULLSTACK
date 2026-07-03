@@ -20,7 +20,7 @@ const App = () => {
 
         {/* Paragraph */}
         <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-neutral-400">
-          This domain has been flagged by automated security systems due to potential vulnerability risks. To ensure safety and prevent unauthorized access, protection measures have been applied and website access is temporarily restricted. Full access will be restored once domain protection verification is completed.
+          Website access has been temporarily restricted while security enhancements are being implemented. Services will resume after the maintenance process has been completed
         </p>
 
         {/* Footer */}
